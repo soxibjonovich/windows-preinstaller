@@ -13,10 +13,10 @@ jobs:
       - uses: astral-sh/setup-uv@v4
 
       - name: Install dependencies
-        run: uv sync && uv pip install pyinstaller
+        run: uv sync && uv add --dev pyinstaller
 
       - name: Build exe
-        run: pyinstaller --onefile --name windows-preinstaller main.py
+        run: uv run pyinstaller --onefile --name windows-preinstaller main.py
 
       - name: Upload to release
         uses: softprops/action-gh-release@v2
