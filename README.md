@@ -34,3 +34,4 @@ POLICY_URLS: dict[str, str] = {
 }
 ```
 2. Add `"newapp"` to `allowed_apps` in `settings.json`
+ 
