@@ -1,0 +1,24 @@
+name: Build Windows exe
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync && uv pip install pyinstaller
+
+      - name: Build exe
+        run: pyinstaller --onefile --name windows-preinstaller main.py
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/windows-preinstaller.exe
