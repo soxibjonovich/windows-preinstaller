@@ -2,29 +2,17 @@
 
 Async download manager for preinstalling Windows utilities.
 
-## Setup
-
-```bash
-uv sync
-```
-
 ## Usage
 
-1. Edit `settings.json` — add app keys to `allowed_apps`:
-
+1. Download `windows-preinstaller.exe` from [Releases](../../releases)
+2. Edit `settings.json` next to the exe:
 ```json
 {
-  "allowed_apps": ["reg", "ut", "7z", "raven", "win10tweaker"]
+  "allowed_apps": ["reg", "ut", "7z"]
 }
 ```
-
-2. Run:
-
-```bash
-uv run main.py
-```
-
-Downloads go to `downloads/`.
+3. Run `windows-preinstaller.exe`
+4. Files download to `downloads/` folder
 
 ## Available Apps
 
@@ -38,13 +26,11 @@ Downloads go to `downloads/`.
 
 ## Adding a New App
 
-Add an entry to `POLICY_URLS` in `main.py`:
-
+1. Add URL to `POLICY_URLS` in `main.py`:
 ```python
 POLICY_URLS: dict[str, str] = {
     ...
     "newapp": "https://example.com/app.exe",
 }
 ```
-
-Then add `"newapp"` to `settings.json`.
+2. Add `"newapp"` to `allowed_apps` in `settings.json`
