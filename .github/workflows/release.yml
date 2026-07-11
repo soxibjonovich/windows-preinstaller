@@ -13,7 +13,10 @@ jobs:
       - uses: astral-sh/setup-uv@v4
 
       - name: Install dependencies
-        run: uv sync && uv add --dev pyinstaller
+        run: uv sync
+
+      - name: Install PyInstaller
+        run: uv add --group dev pyinstaller
 
       - name: Build exe
         run: uv run pyinstaller --onefile --name windows-preinstaller main.py
